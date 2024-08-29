@@ -13,7 +13,8 @@ LABEL maintainer="Ross Ragsdale <ross.ragsdale@gmail.com>"
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update && apt-get install -y awscli
+RUN apt-get update && apt-get install -y zip unzip curl
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && unzip awscliv2.zip && bash ./aws/install
 
 ADD entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
